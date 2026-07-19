@@ -1,0 +1,566 @@
+/* ==========================================================================
+   CSS Variables & Reset
+   ========================================================================== */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --dark-bg: #0f172a;
+    --light-bg: #f8fafc;
+    --text-main: #334155;
+    --text-light: #94a3b8;
+    --white: #ffffff;
+    --focus-ring: rgba(37, 99, 235, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    color: var(--text-main);
+    background-color: var(--white);
+    line-height: 1.6;
+    padding-top: 70px; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================================================================
+   Global Interactive & Accessibility Styles (Focus, Active)
+   ========================================================================== */
+/* Ensures high-visibility outline for keyboard navigation */
+a:focus-visible, 
+button:focus-visible, 
+input:focus-visible, 
+textarea:focus-visible, 
+select:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* ==========================================================================
+   FLEXBOX: Fixed Navigation Bar
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--dark-bg);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Interactive Hover State */
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-cta {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.nav-cta:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Interactive Active (Click) State */
+.nav-cta:active {
+    transform: scale(0.95);
+}
+
+/* ==========================================================================
+   FLEXBOX: Hero Section
+   ========================================================================== */
+.hero-section {
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                url('https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+    height: 80vh;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    color: #e2e8f0;
+}
+
+.primary-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+/* Interactive Hover & Active states for buttons */
+.primary-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+}
+
+.primary-btn:active {
+    transform: translateY(1px); /* Press down effect */
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+}
+
+.secondary-btn {
+    background-color: #10b981; /* Green color for feedback */
+}
+
+.secondary-btn:hover {
+    background-color: #059669;
+    box-shadow: 0 8px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* ==========================================================================
+   GRID: Card Grids (Features & Testimonials)
+   ========================================================================== */
+section {
+    padding: 80px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--dark-bg);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    align-items: stretch; 
+}
+
+.features-section {
+    background-color: var(--light-bg);
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Hover effect on feature cards */
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--dark-bg);
+}
+
+.testimonials-section {
+    background-color: var(--white);
+}
+
+.testimonial-card {
+    background-color: var(--light-bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.review-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   NEW: Interactions Section (Contact & Feedback Grid)
+   ========================================================================== */
+.interactions-section {
+    background-color: var(--light-bg);
+}
+
+.interactions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.form-card {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.form-card h2 {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.form-card p {
+    margin-bottom: 30px;
+    color: var(--text-light);
+}
+
+/* Shared Form Styles (Used in Checkout, Contact, Feedback) */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    padding: 12px 15px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+}
+
+/* Interactive Input States */
+.form-group input:hover, 
+.form-group textarea:hover, 
+.form-group select:hover {
+    border-color: #94a3b8;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus, 
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+.form-group textarea {
+    resize: vertical; /* Allows users to drag textarea up/down, but not break layout left/right */
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+/* ==========================================================================
+   NEW: Subscription Section
+   ========================================================================== */
+.subscribe-section {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.subscribe-section h2 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.subscribe-section p {
+    color: #e2e8f0;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.subscribe-form input {
+    flex: 1;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.subscribe-form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+/* ==========================================================================
+   Checkout Page Specific Styles (GRID & FLEXBOX)
+   ========================================================================== */
+.checkout-page {
+    background-color: var(--light-bg);
+}
+
+.checkout-container {
+    padding-top: 100px; 
+    padding-bottom: 60px;
+}
+
+.checkout-container h1 {
+    font-size: 2.2rem;
+    color: var(--dark-bg);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.checkout-form-section h2, 
+.order-summary-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--dark-bg);
+    text-align: left;
+}
+
+.checkout-form-section h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin: 25px 0 15px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 5px;
+}
+
+/* Order Summary */
+.summary-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.summary-product {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.summary-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.total-row {
+    border-top: 2px solid #e2e8f0;
+    padding-top: 15px;
+    margin-top: 15px;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--dark-bg);
+}
+
+.secure-badge {
+    text-align: center;
+    margin-top: 25px;
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 50px 0 20px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES: Tablet & Mobile Breakpoints
+   ========================================================================== */
+
+/* TABLET VIEW (Screens smaller than 1024px) */
+@media screen and (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3rem; 
+    }
+    .checkout-grid {
+        grid-template-columns: 1.2fr 1fr; 
+        gap: 25px;
+    }
+}
+
+/* MOBILE VIEW (Screens smaller than 768px) */
+@media screen and (max-width: 768px) {
+    /* Navbar Adjustments */
+    .nav-links {
+        display: none; 
+    }
+    
+    /* Hero Section Adjustments */
+    .hero-content h1 {
+        font-size: 2.2rem; 
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    section {
+        padding: 50px 0;
+    }
+    section h2 {
+        font-size: 2rem;
+    }
+
+    /* Checkout & Interactions Layout Adjustments */
+    .checkout-grid,
+    .interactions-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    .order-summary-section {
+        order: -1; 
+    }
+
+    .form-row {
+        flex-direction: column; 
+        gap: 0;
+    }
+
+    /* Subscription form vertical stack */
+    .subscribe-form {
+        flex-direction: column;
+    }
+    
+    .subscribe-form button {
+        width: 100%;
+    }
+    
+    .checkout-container {
+        padding-top: 80px;
+    }
+}
